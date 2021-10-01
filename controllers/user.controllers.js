@@ -61,7 +61,7 @@ const putUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
      try {
-         await users.findByIdAndUpdate(req.params.id, { estado: false })
+         await users.findByIdAndUpdate(req.body.id, { estado: false })
          res.status(203).json('Usuario borrado correctamente')
     } catch (err) {
         

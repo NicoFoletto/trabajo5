@@ -8,12 +8,18 @@ const  {
     deleteUser
 } = require('../controllers/user.controllers');
 
+const  {validarAgregarUsers,
+    validarEditarUsers, 
+    validarCampos,
+    validarEliminarUser} = require('../middlewares/validarCamposUsers');
 
-router.get('/',getUsers);
-router.get('/:id',getUser);
-router.post('/:id',postUser);
-router.put('/',putUser);
-router.delete('/:id',deleteUser);
+
+
+router.get('/get-user',getUsers);
+router.get('/get-user/:id',getUser);
+router.post('/create-user',[validarAgregarUsers(), validarCampos ],postUser);
+router.put('/edit-user',[validarEditarUsers(), validarCampos],putUser);
+router.delete('/delete-user',[validarEliminarUser(), validarCampos],deleteUser);
 
 
 module.exports = router
