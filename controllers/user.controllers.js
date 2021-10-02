@@ -30,7 +30,7 @@ const getUser = async (req, res) => {
 }
 
 const postUser = async (req, res) => {
-    console.log('Hi hi')
+    //console.log('Hi hi')
      try {
          const { email, password } = req.body
          const newPassword = await bcrypt.hash(password, 10)
